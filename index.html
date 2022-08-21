@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <link href="./style.css" rel="stylesheet"/>
+
+    <script src="./js/create-buttons.js"></script>
+</head>
+<body>
+    <a-scene
+    embedded vr-mode-ui="enabled: false"     
+    arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;debugUIEnabled: false;"
+    gesture-detector >
+
+        <a-assets>
+            <a-asset-item id="crane_model" src="./assets/crane_model/scene.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-marker
+            type="pattern"
+            URL="assets/markers/pattern-crane.patt"
+            cursor="rayOrigin: mouse">
+        
+            <a-entity 
+                id="crane-3d-model" 
+                gltf-model="#crane_model" 
+                position="-2 0 0" 
+                scale="0.5 0.5 0.5"
+                gesture-handler
+            ></a-entity>
+
+            <a-plane position="0 0 0" width="1.5" height="1.5" rotation="-90 0 0" color="#ffdd55">
+                <a-plane position="0 0.89 0.2" rotation="-90 0 0" width="1.4" height="0.4" color="#ddbb33">
+                    <a-entity
+                        position="0 0 0.1" 
+                        text="font: monoid; value: HYDRAULIC CRANE; color:black; width: 1.8; height: 1; align: center"
+                    ></a-entity>
+                </a-plane>
+
+                <a-entity position="0 0 0.1" rotation="0 0 0"
+                    text="color: black; align: center; width: 2; font: monoid;
+                        value:Manual Hydraulic Floor Crane that we manufacture\n\n
+                        and supply is immensely accredited for attributes like\n\n
+                        sturdy construction, excellent functionality, easy\n\n
+                        operation and longer service life. Manual Hydraulic\n\n 
+                        Floor Crane is manually operated and immensely demanded\n\n
+                        for lifting and shifting purpose of heavier materials.\n\n
+                        Obtain from us, Manual Hydraulic Floor Crane at very ost\n\n
+                        effective rates. ">
+                </a-entity>
+
+            </a-plane>
+
+        </a-marker>
+
+    </a-scene>
+
+    <div id="button-div"></div>
+
+</body>
+</html>
